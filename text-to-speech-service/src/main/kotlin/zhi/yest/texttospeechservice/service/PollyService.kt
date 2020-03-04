@@ -15,7 +15,8 @@ class PollyService(private val pollyClient: AmazonPollyAsync) {
     fun init() {
         val describeVoicesRequest = DescribeVoicesRequest()
         val describeVoicesResult: DescribeVoicesResult = pollyClient.describeVoices(describeVoicesRequest)
-        voice = describeVoicesResult.voices[0]
+        voice = describeVoicesResult.voices
+                .filter { it.name == "Maxim" }[0]
     }
 
     suspend fun toSpeech(text: String): SynthesizeSpeechResult {
