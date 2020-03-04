@@ -12,11 +12,9 @@ class PollyService(private val pollyClient: AmazonPollyAsync) {
     private lateinit var voice: Voice
 
     @PostConstruct
-    suspend fun init() {
+    fun init() {
         val describeVoicesRequest = DescribeVoicesRequest()
-        val describeVoicesResult: DescribeVoicesResult = withContext(IO) {
-            pollyClient.describeVoicesAsync(describeVoicesRequest).get()
-        }
+        val describeVoicesResult: DescribeVoicesResult = pollyClient.describeVoices(describeVoicesRequest)
         voice = describeVoicesResult.voices[0]
     }
 

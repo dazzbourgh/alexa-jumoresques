@@ -1,0 +1,9 @@
+spring:
+  profiles: standalone
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
