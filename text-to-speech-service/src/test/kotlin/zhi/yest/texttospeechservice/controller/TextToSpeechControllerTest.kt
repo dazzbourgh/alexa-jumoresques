@@ -4,6 +4,7 @@ import javazoom.jl.player.FactoryRegistry
 import javazoom.jl.player.advanced.AdvancedPlayer
 import javazoom.jl.player.advanced.PlaybackEvent
 import javazoom.jl.player.advanced.PlaybackListener
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -21,6 +22,7 @@ import java.io.ByteArrayInputStream
 @ExtendWith(SpringExtension::class)
 @WebFluxTest(TextToSpeechController::class)
 @ComponentScan("zhi.yest.texttospeechservice.config", "zhi.yest.texttospeechservice.service")
+@Disabled("Should only be run manually")
 internal class TextToSpeechControllerTest {
     @Autowired
     private lateinit var webTestClient: WebTestClient
