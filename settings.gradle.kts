@@ -9,3 +9,4 @@
 
 rootProject.name = "alexa-jumoresques"
 include("text-to-speech-service")
+include("vk-jumoresques-scanner-service")

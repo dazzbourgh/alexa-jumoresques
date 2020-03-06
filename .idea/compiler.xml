@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="text-to-speech-service.main" target="11" />
       <module name="text-to-speech-service.test" target="11" />
+      <module name="vk-jumoresques-scanner-service.main" target="11" />
+      <module name="vk-jumoresques-scanner-service.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
