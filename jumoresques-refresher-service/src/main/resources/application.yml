@@ -1,0 +1,3 @@
+jumoresques:
+  refresh:
+    rate: 3600000 #one hour in ms

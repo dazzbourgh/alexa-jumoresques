@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.reactive.function.client.WebClient
 
 @RestController
-@RequestMapping("vk/wall")
+@RequestMapping("wall")
 class WallController(private val webClient: WebClient,
                      private val vkConfig: VkConfig) {
     @GetMapping("{domain}")
-    suspend fun fetchJumoresques(@PathVariable domain: String): VkResponse = webClient.get()
+    suspend fun fetchJumoresques(@PathVariable domain: String) = webClient.get()
             .uri {
                 it.scheme("https").host("api.vk.com")
                         .path("method/wall.get")
@@ -24,5 +24,6 @@ class WallController(private val webClient: WebClient,
             }
             .retrieve()
             .bodyToMono(VkResponse::class.java)
-            .awaitFirst()
+            .awaitFirst().response.items
+            .map { Jumoresque(it.text, it.likes.count) }
 }

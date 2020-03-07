@@ -13,3 +13,5 @@ data class Post(val id: Int,
                 val likes: Likes)
 
 data class Likes(val count: Int)
+
+data class Jumoresque(val text: String, val likes: Int)
