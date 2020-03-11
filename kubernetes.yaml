@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: text-to-speech-service
+  name: text-to-speech-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: text-to-speech-service
+  template:
+    metadata:
+      labels:
+        app: text-to-speech-service
+    spec:
+      containers:
+        - name: text-to-speech-service
+          image: gcr.io/alexa-jumoresques/text-to-speech-service:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vk-jumoresques-scanner-service
+  name: vk-jumoresques-scanner-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vk-jumoresques-scanner-service
+  template:
+    metadata:
+      labels:
+        app: vk-jumoresques-scanner-service
+    spec:
+      containers:
+        - name: text-to-speech-service
+          image: gcr.io/alexa-jumoresques/vk-jumoresques-scanner-service:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jumoresques-refresher-service
+  name: jumoresques-refresher-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jumoresques-refresher-service
+  template:
+    metadata:
+      labels:
+        app: jumoresques-refresher-service
+    spec:
+      containers:
+        - name: jumoresques-refresher-service
+          image: gcr.io/alexa-jumoresques/jumoresques-refresher-service:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always

@@ -8,5 +8,4 @@
  */
 
 rootProject.name = "alexa-jumoresques"
-include("text-to-speech-service")
-include("vk-jumoresques-scanner-service")
+include("text-to-speech-service", "vk-jumoresques-scanner-service", "jumoresques-refresher-service")

@@ -1,0 +1,12 @@
+steps:
+  - id: Build
+    name: 'gradle:6.2.1-jdk11'
+    entrypoint: gradle
+    args: ['jib']
+  - id: Deploy to GKE
+    name: 'gcr.io/cloud-builders/gke-deploy:stable'
+    args:
+      - run
+      - --filename=./kubernetes.yaml
+      - --cluster=cluster-1
+      - --location=us-west1-c # region or zone
