@@ -24,13 +24,13 @@ spec:
             - name: AWS_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: literal-token
-                  key: aws_access_key
+                  name: aws-credentials
+                  key: aws-access-key
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: literal-token
-                  key: aws_secret_access_key
+                  name: aws-credentials
+                  key: aws-secret-access-key
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -54,6 +54,12 @@ spec:
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
+          env:
+            - name: ACCESS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: vk-credentials
+                  key: access-token
 ---
 apiVersion: apps/v1
 kind: Deployment
