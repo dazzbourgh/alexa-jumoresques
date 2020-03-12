@@ -1,6 +1,6 @@
 steps:
   - id: Build
-    name: 'gradle:6.2.1-jdk11'
+    name: 'gcr.io/cloud-builders/gradle'
     entrypoint: gradle
     args: ['jib']
   - id: Deploy to GKE
