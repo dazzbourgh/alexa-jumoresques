@@ -83,3 +83,42 @@ spec:
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vk-jumoresques-scanner-service
+spec:
+  selector:
+    app: vk-jumoresques-scanner-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: text-to-speech-service
+spec:
+  selector:
+    app: text-to-speech-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: test-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /testpath
+            backend:
+              serviceName: test
+              servicePort: 80

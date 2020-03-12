@@ -1,3 +1,10 @@
 jumoresques:
   refresh:
     rate: 3600000 #one hour in ms
+spring:
+  application:
+    name: jumoresques-refresher-service
+  cloud:
+    kubernetes:
+      discovery:
+        all-namespaces: true

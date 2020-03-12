@@ -2,3 +2,7 @@ vk:
   access-token: ${ACCESS_TOKEN}
   version: 5.103
 
+spring:
+  application:
+    name: vk-jumoresques-scanner-service
+
