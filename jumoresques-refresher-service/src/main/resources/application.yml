@@ -8,3 +8,5 @@ spring:
     kubernetes:
       discovery:
         all-namespaces: true
+  codec:
+    max-in-memory-size: 10MB
