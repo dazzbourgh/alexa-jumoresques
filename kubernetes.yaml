@@ -83,7 +83,6 @@ spec:
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
-      serviceAccountName: spring-cloud-kubernetes
 ---
 apiVersion: v1
 kind: Service
