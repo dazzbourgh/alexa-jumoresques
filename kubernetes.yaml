@@ -127,7 +127,6 @@ kind: Ingress
 metadata:
   annotations:
   name: gateway-ingress
-  namespace: default
 spec:
   rules:
     - http:
@@ -135,4 +134,4 @@ spec:
           - backend:
               serviceName: jumoresques-refresher-service
               servicePort: 80
-            path: /jumoresques/*
+            path: /jumoresques

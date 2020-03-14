@@ -21,13 +21,7 @@ class JumoresqueRefreshingJob(private val audioJumoresqueDao: AudioJumoresqueDao
                     .filter { it.text.isNotEmpty() }
                     .sortedByDescending { it.likes }
                     .take(5)
-                    .map {
-                        LOGGER.info("""
-                            Sending request to text-to-speech-service:
-                                ${it.text}
-                        """.trimIndent())
-                        AudioJumoresque(it, textToSpeechService.toSpeech(it.text))
-                    }
+                    .map { AudioJumoresque(it, textToSpeechService.toSpeech(it.text)) }
                     .also {
                         audioJumoresqueDao.deleteAll()
                         audioJumoresqueDao.save(it)
