@@ -121,17 +121,3 @@ spec:
       port: 80
       targetPort: 8080
   type: LoadBalancer
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  annotations:
-  name: gateway-ingress
-spec:
-  rules:
-    - http:
-        paths:
-          - backend:
-              serviceName: jumoresques-refresher-service
-              servicePort: 80
-            path: /jumoresques
