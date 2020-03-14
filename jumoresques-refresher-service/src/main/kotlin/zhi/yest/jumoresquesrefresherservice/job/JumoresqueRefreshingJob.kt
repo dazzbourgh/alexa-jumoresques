@@ -17,6 +17,7 @@ class JumoresqueRefreshingJob(private val audioJumoresqueDao: AudioJumoresqueDao
     fun refreshJumoresques() {
         GlobalScope.launch {
             vkJumoresqueService.fetch()
+                    .filter { it.text.isNotEmpty() }
                     .sortedByDescending { it.likes }
                     .take(5)
                     .map { AudioJumoresque(it, textToSpeechService.toSpeech(it.text)) }
