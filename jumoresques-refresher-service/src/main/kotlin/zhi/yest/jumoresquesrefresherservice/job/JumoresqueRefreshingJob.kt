@@ -36,6 +36,6 @@ class JumoresqueRefreshingJob(private val audioJumoresqueDao: AudioJumoresqueDao
     }
 
     companion object {
-        val LOGGER: Logger = Logger.getLogger(JumoresqueRefreshingJob.javaClass.name)
+        val LOGGER: Logger = Logger.getLogger(JumoresqueRefreshingJob::class.java.name)
     }
 }
