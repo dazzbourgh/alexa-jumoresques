@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 import zhi.yest.jumoresquesrefresherservice.dao.AudioJumoresqueDao
 
 @RestController
-@RequestMapping
+@RequestMapping("/jumoresques")
 class JumoresquesController(private val audioJumoresqueDao: AudioJumoresqueDao) {
     @GetMapping
     suspend fun getJumoresques() = audioJumoresqueDao.findAll()
