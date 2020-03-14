@@ -1,19 +1,18 @@
 package zhi.yest.jumoresquesrefresherservice.dao
 
 import org.springframework.stereotype.Repository
-import zhi.yest.jumoresquesrefresherservice.domain.AudioJumoresque
 
 @Repository
 class InMemoryAudioJumoresquesDao : AudioJumoresqueDao {
-    private val jumoresquesList = mutableListOf<AudioJumoresque>()
+    private var jumoresquesList = mutableListOf<String>()
 
     override suspend fun deleteAll() {
-        jumoresquesList.removeAll { true }
+        jumoresquesList = mutableListOf()
     }
 
-    override suspend fun save(jumoresques: List<AudioJumoresque>) {
-        jumoresquesList.addAll(jumoresques)
+    override suspend fun save(jumoresques: List<String>) {
+        jumoresquesList = jumoresques.toMutableList()
     }
 
-    override suspend fun findAll(): List<AudioJumoresque> = jumoresquesList
+    override suspend fun findAll(): List<String> = jumoresquesList
 }
