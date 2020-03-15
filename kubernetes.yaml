@@ -83,6 +83,16 @@ spec:
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
+          volumeMounts:
+            - name: jumoresques-service-account-key
+              mountPath: /var/secrets/google
+          env:
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /var/secrets/google/key.json
+      volumes:
+        - name: jumoresques-service-account-key
+          secret:
+            secretName: jumoresques-key
 ---
 apiVersion: v1
 kind: Service
