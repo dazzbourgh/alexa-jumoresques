@@ -1,7 +1,7 @@
 package zhi.yest.jumoresquesrefresherservice.domain
 
 data class Jumoresque(val text: String, val likes: Int)
-data class AudioJumoresque(val jumoresque: String, val audio: IntArray) {
+data class AudioJumoresque(val jumoresque: String, val audio: ByteArray) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

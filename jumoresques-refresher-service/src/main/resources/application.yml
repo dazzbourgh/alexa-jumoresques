@@ -8,3 +8,8 @@ spring:
     kubernetes:
       discovery:
         all-namespaces: true
+
+gcp:
+  project-id: alexa-jumoresques
+  bucket-name: audio-jumoresques
+  object-name: jumoresques

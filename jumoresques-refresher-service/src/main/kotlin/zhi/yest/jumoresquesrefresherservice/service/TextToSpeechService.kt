@@ -6,7 +6,7 @@ import org.springframework.web.reactive.function.client.awaitBody
 
 @Service
 class TextToSpeechService(private val webClientBuilder: WebClient.Builder) {
-    suspend fun toSpeech(text: String): IntArray =
+    suspend fun toSpeech(text: String): ByteArray =
             webClientBuilder.build().post()
                     .uri("http://text-to-speech-service/text")
                     .bodyValue(text)
