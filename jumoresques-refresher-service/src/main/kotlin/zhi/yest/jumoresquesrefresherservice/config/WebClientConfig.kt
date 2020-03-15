@@ -11,5 +11,6 @@ class WebClientConfig {
     @Bean
     fun webClientBuilder(): WebClient.Builder {
         return WebClient.builder()
+                .codecs { it.defaultCodecs().maxInMemorySize(-1) }
     }
 }
