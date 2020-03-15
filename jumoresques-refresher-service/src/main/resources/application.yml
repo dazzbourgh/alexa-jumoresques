@@ -12,4 +12,4 @@ spring:
 gcp:
   project-id: alexa-jumoresques
   bucket-name: audio-jumoresques
-  object-name: jumoresques
+  object-name: jumoresques.mp3
