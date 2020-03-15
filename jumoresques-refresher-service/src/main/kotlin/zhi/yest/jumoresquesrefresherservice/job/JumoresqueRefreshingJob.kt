@@ -8,7 +8,6 @@ import zhi.yest.jumoresquesrefresherservice.dao.AudioJumoresqueDao
 import zhi.yest.jumoresquesrefresherservice.domain.AudioJumoresque
 import zhi.yest.jumoresquesrefresherservice.service.TextToSpeechService
 import zhi.yest.jumoresquesrefresherservice.service.VkJumoresqueService
-import java.util.logging.Logger
 
 @Component
 class JumoresqueRefreshingJob(private val audioJumoresqueDao: AudioJumoresqueDao,
@@ -21,15 +20,12 @@ class JumoresqueRefreshingJob(private val audioJumoresqueDao: AudioJumoresqueDao
                     .filter { it.text.isNotEmpty() }
                     .sortedByDescending { it.likes }
                     .take(5)
-                    .map { AudioJumoresque(it, textToSpeechService.toSpeech(it.text)) }
+                    .joinToString(separator = "\n", prefix = "Прослушайте свежие юморески.\n", postfix = "Очень смешно.")
+                    .let { AudioJumoresque(it, textToSpeechService.toSpeech(it)) }
                     .also {
                         audioJumoresqueDao.deleteAll()
-                        audioJumoresqueDao.save(it)
+                        audioJumoresqueDao.save(listOf(it))
                     }
         }
-    }
-
-    companion object {
-        val LOGGER: Logger = Logger.getLogger(JumoresqueRefreshingJob::class.java.name)
     }
 }

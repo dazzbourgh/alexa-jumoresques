@@ -10,4 +10,6 @@ import zhi.yest.jumoresquesrefresherservice.dao.AudioJumoresqueDao
 class JumoresquesController(private val audioJumoresqueDao: AudioJumoresqueDao) {
     @GetMapping
     suspend fun getJumoresques() = audioJumoresqueDao.findAll()
+            .reduce { _, audioJumoresque -> audioJumoresque }
+            .audio
 }
