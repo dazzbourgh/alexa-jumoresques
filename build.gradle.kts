@@ -35,7 +35,8 @@ subprojects {
     }
 
     configure<com.google.cloud.tools.jib.gradle.JibExtension> {
-        to.image = "gcr.io/alexa-jumoresques/${project.name}:${project.version}"
+        to.image = "403020287921.dkr.ecr.us-east-2.amazonaws.com/${project.name}"
+        to.credHelper = "ecr-login"
     }
 
     tasks.withType<JavaCompile> {

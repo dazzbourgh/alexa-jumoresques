@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: text-to-speech-service
-          image: gcr.io/alexa-jumoresques/text-to-speech-service:0.0.1-SNAPSHOT
+          image: 403020287921.dkr.ecr.us-east-2.amazonaws.com/text-to-speech-service:latest
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
         - name: text-to-speech-service
-          image: gcr.io/alexa-jumoresques/vk-jumoresques-scanner-service:0.0.1-SNAPSHOT
+          image: 403020287921.dkr.ecr.us-east-2.amazonaws.com/vk-jumoresques-scanner-service:latest
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
@@ -79,7 +79,7 @@ spec:
     spec:
       containers:
         - name: jumoresques-refresher-service
-          image: gcr.io/alexa-jumoresques/jumoresques-refresher-service:0.0.1-SNAPSHOT
+          image: 403020287921.dkr.ecr.us-east-2.amazonaws.com/jumoresques-refresher-service:latest
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
