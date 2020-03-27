@@ -2,40 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: text-to-speech-service
-  name: text-to-speech-service
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: text-to-speech-service
-  template:
-    metadata:
-      labels:
-        app: text-to-speech-service
-    spec:
-      containers:
-        - name: text-to-speech-service
-          image: 403020287921.dkr.ecr.us-east-2.amazonaws.com/text-to-speech-service:latest
-          ports:
-            - containerPort: 8080
-          imagePullPolicy: Always
-          env:
-            - name: AWS_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: aws-credentials
-                  key: aws-access-key
-            - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: aws-credentials
-                  key: aws-secret-access-key
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
     app: vk-jumoresques-scanner-service
   name: vk-jumoresques-scanner-service
 spec:
@@ -105,19 +71,6 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: text-to-speech-service
-spec:
-  selector:
-    app: text-to-speech-service
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
-
 ---
 apiVersion: v1
 kind: Service
